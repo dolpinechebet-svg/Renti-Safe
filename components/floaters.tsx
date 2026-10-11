@@ -12,7 +12,7 @@ const ChatPanel = dynamic(() => import("@/components/chat-panel"), {
 export function Floaters({ message }: { message: string }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "254700000000";
+  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "254745553547";
   const pageMessage = pathname.startsWith("/status/")
     ? `Hi RentiSafe, I have a question about verification ${pathname.split("/")[2]}.`
     : pathname.startsWith("/scam-database") ? "I want to check a landlord number" : message;

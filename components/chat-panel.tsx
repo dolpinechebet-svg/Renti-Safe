@@ -35,6 +35,6 @@ export default function ChatPanel({ onClose }: { onClose: () => void }) {
     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}><strong>Ask RentiSafe</strong><button type="button" onClick={onClose} aria-label="Close chat">×</button></div>
     <div className="chat-messages" aria-live="polite">{messages.map((item, i) => <p key={`${i}-${item.role}`} className={`chat-bubble ${item.role}`}>{item.content}</p>)}</div>
     <form onSubmit={send} className="stack" style={{ gap: 8 }}><label className="field"><span className="field-label">Your question</span><input name="message" maxLength={500} required placeholder="How does a check work?" /></label><button className="btn" disabled={busy}>{busy ? "Sending…" : "Send"}</button></form>
-    <a className="hint" href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "254700000000"}?text=${encodeURIComponent("Hi RentiSafe, I need some help")}`}>Need a person? WhatsApp us</a>
+    <a className="hint" href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "254745553547"}?text=${encodeURIComponent("Hi RentiSafe, I need some help")}`}>Need a person? WhatsApp us</a>
   </section>;
 }

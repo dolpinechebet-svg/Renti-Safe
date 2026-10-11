@@ -101,7 +101,7 @@ export function RequestForm() {
     if (!form) return;
     const fields = new FormData(form);
     const text = `Hi RentiSafe, I want to verify a house. Location: ${fields.get("location_text") || "not added"}. Listing: ${fields.get("listing_link") || "not added"}. My phone: ${fields.get("tenant_phone") || "not added"}.`;
-    window.open(`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "254700000000"}?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
+    window.open(`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "254745553547"}?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
   }
 
   return <form id="request-form" className="form-card stack" onSubmit={submit}>
