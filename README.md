@@ -34,6 +34,17 @@ Requirements: Node.js 20.9 or later and a Supabase project.
 
 Set the values in `.env.example` in local development and Vercel. Keep `SUPABASE_SERVICE_ROLE_KEY` and `SESSION_SECRET` server-only. The SQL schema enables RLS, creates the private `verification-media` storage bucket and installs storage policies. Public rental pages display only listings with `status = 'available'`; admin access requires a Supabase Auth user linked in `admin_users`. Server-side database access uses the service-role key, which bypasses RLS, so the key must never be exposed to the browser and route authorization remains essential.
 
+### Publish a public app link with Vercel
+
+The local development URL (`localhost` or `127.0.0.1`) is only reachable on the computer running the app. To get a link that works on other devices:
+
+1. [Import Renti-Safe into Vercel](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdolpinechebet-svg%2FRenti-Safe) and sign in with GitHub.
+2. In the Vercel project settings, add the variables listed in `.env.example`. Supabase variables are required for sign-in, saved listings, requests, and inspection uploads. Create the Supabase project and run `supabase/schema.sql` first. Do not add secrets to GitHub.
+3. Set `NEXT_PUBLIC_SITE_URL` to the Vercel URL assigned to the project, then deploy. Open that `https://*.vercel.app` URL on other devices.
+4. To use `rentisafe.co.ke`, add it under **Vercel → Project → Settings → Domains** and configure the DNS records Vercel provides at the domain registrar. Set `NEXT_PUBLIC_SITE_URL=https://rentisafe.co.ke` and redeploy after the domain is connected.
+
+Without Supabase credentials, the public site can deploy, but database-backed features will not be functional. The domain `rentisafe.co.ke` must also be registered and pointed to Vercel before that address will work.
+
 The tenant request flow still has a **Simulate Payment** control from the prototype. It marks the request paid without collecting money. Do not accept real customer payments until a payment provider such as Safaricom Daraja is integrated, payment callbacks are verified server-side, and this simulated path is disabled in production. Outbound WhatsApp is also a database notification log, not a real message.
 
 ## WhatsApp intake prototype
